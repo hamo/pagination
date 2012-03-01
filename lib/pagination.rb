@@ -1,4 +1,6 @@
 module Pagination
+  autoload :FileAdapter,   'pagination/adapters/file'
+  autoload :ArrayAdapter,   'pagination/adapters/array'
   autoload :OhmAdapter,     'pagination/adapters/ohm'
   autoload :SunspotAdapter, 'pagination/adapters/sunspot'
   autoload :Collection,     'pagination/collection'
