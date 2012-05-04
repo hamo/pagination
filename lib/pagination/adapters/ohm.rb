@@ -11,7 +11,7 @@ module Pagination
     end
 
     def results
-      if @dataset.kind_of?(Ohm::Model::List)
+      if @dataset.kind_of?(Ohm::List)
         @dataset[@start, @per_page + @start - 1]
       elsif @sort_by
         @dataset.sort_by @sort_by, sort_options
@@ -33,8 +33,8 @@ module Pagination
     end
 
     def sort_options
-      { :start => @start,
-        :limit => @per_page,
+      { 
+        :limit => @start ? [@start, @per_page] : @per_page,
         :order => @order
       }
     end
