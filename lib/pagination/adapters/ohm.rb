@@ -34,7 +34,7 @@ module Pagination
 
     def sort_options
       { 
-        :limit => @start ? [@start, @per_page] : @per_page,
+        :limit => @start ? [@start, @per_page] : [0, @per_page],
         :order => @order
       }
     end
