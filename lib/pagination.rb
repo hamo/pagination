@@ -10,12 +10,13 @@ module Pagination
   extend self
 
   def paginate(collection, options = {})
-    ad = case collection
-         when Sunspot::Search::StandardSearch; SunspotAdapter
-         when Array; ArrayAdapter
-         else; adapter
-         end
-    ad.new(collection, options)
+    if defined?(Sunspot) and collection.is_a?(Sunspot::Search::StandardSearch)
+      SunspotAdapter.new(collection, options)
+    elsif collection.is_a? Array
+      ArrayAdapter.new(collection, options)
+    else
+      adapter.new(collection, options)
+    end
   end
 
   def per_page(per_page = nil)
