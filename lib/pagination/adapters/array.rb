@@ -10,7 +10,7 @@ module Pagination
     end
 
     def results
-      @dataset[@start, @per_page + @start - 1]
+      @dataset[@start, @per_page]
     end
 
   end
